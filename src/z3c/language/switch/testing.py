@@ -103,29 +103,29 @@ class I18nContentObject(object):
 
     # IReadI18n interface
     def getAvailableLanguages(self):
-        """See `z3c.langauge.switch.interfaces.IReadI18n`"""
+        """See `z3c.language.switch.interfaces.IReadI18n`"""
         keys = self._data.keys()
         keys.sort()
         return keys
 
     def getDefaultLanguage(self):
-        """See `z3c.langauge.switch.interfaces.IReadI18n`"""
+        """See `z3c.language.switch.interfaces.IReadI18n`"""
         return self._defaultLanguage
 
     # IWriteI18n interface
     def setDefaultLanguage(self, language):
-        """See `z3c.langauge.switch.interfaces.IWriteI18n`"""
+        """See `z3c.language.switch.interfaces.IWriteI18n`"""
         if language not in self._data:
             raise ValueError(
                   'cannot set nonexistent language (%s) as default' % language)
         self._defaultLanguage = language
 
     def addLanguage(self, language, title=''):
-        """See `z3c.langauge.switch.interfaces.IWriteI18n`"""
+        """See `z3c.language.switch.interfaces.IWriteI18n`"""
         return self._get_or_add(language, title)
 
     def removeLanguage(self, language):
-        """See `z3c.langauge.switch.interfaces.IWriteI18n`"""
+        """See `z3c.language.switch.interfaces.IWriteI18n`"""
         if language == self.getDefaultLanguage():
             raise ValueError('cannot remove default language (%s)' % language)
         elif language not in self._data:
@@ -183,11 +183,11 @@ class I18nContentObjectLanguageSwitch(object):
 
     # II18nLanguageSwitch interface
     def getLanguage(self):
-        """See `z3c.langauge.switch.interfaces.II18nLanguageSwitch`"""
+        """See `z3c.language.switch.interfaces.II18nLanguageSwitch`"""
         return self._language
 
     def setLanguage(self, language):
-        """See `z3c.langauge.switch.interfaces.II18nLanguageSwitch`"""
+        """See `z3c.language.switch.interfaces.II18nLanguageSwitch`"""
         self._language = language
 
     # II18nContentObject interface
